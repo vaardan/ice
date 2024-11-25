@@ -1,0 +1,53 @@
+
+[cursor]
+thickness = 0.15
+unfocused_hollow = true
+
+[env]
+TERM = "xterm-256color"
+
+[font]
+size = 11.0
+
+[font.bold]
+family = "JetBrainsMono Nerd Font"
+style = "Bold"
+
+[font.bold_italic]
+family = "JetBrainsMono Nerd Font"
+style = "Bold Italic"
+
+[font.italic]
+family = "JetBrainsMono Nerd Font"
+style = "Italic"
+
+[font.normal]
+family = "JetBrainsMono Nerd Font"
+style = "Regular"
+
+[scrolling]
+history = 10000
+
+
+[window]
+# Make Option act as ALT on Mac. Need it for Zellij.
+option_as_alt = "Both"
+opacity = 0.92
+title = ""
+
+[window.dimensions]
+columns = 150
+lines = 40
+
+[window.padding]
+x = 5
+y = 5
+
+[general]
+live_config_reload = true
+import = ["~/.config/alacritty/theme_tokyo_night.toml"]
+
+# [shell]
+# On MacOS, the flag -l must be used. Otherwise it will crash.
+# args = ["-c", "tmux attach || tmux"]
+# program = "/bin/zsh"

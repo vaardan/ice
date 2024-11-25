@@ -1,0 +1,16 @@
+themes{
+    tokyo-night-green-blue{
+        fg "#1a1b26"
+        bg "#1a1b26"
+        black "#32344a"
+        red "#f7768e"
+        //green "#9ece6a"
+        green "#7da6ff" // It's actually blue. Hack to turn main color into blue.
+        yellow "#e0af68"
+        blue "#7aa2f7"
+        magenta "#ad8ee6"
+        cyan "#449dab"
+        white "#787c99"
+        orange "#ed983d"
+    }
+}

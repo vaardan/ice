@@ -1,25 +1,4 @@
 --[[
-
-=====================================================================
-==================== READ THIS BEFORE CONTINUING ====================
-=====================================================================
-========                                    .-----.          ========
-========         .----------------------.   | === |          ========
-========         |.-""""""""""""""""""-.|   |-----|          ========
-========         ||                    ||   | === |          ========
-========         ||   KICKSTART.NVIM   ||   |-----|          ========
-========         ||                    ||   | === |          ========
-========         ||                    ||   |-----|          ========
-========         ||:Tutor              ||   |:::::|          ========
-========         |'-..................-'|   |____o|          ========
-========         `"")----------------(""`   ___________      ========
-========        /::::::::::|  |::::::::::\  \ no mouse \     ========
-========       /:::========|  |==hjkl==:::\  \ required \    ========
-========      '""""""""""""'  '""""""""""""'  '""""""""""'   ========
-========                                                     ========
-=====================================================================
-=====================================================================
-
 What is Kickstart?
 
   Kickstart.nvim is *not* a distribution.
@@ -128,7 +107,8 @@ vim.opt.splitbelow = true
 -- Sets how neovim will display certain whitespace characters in the editor.
 --  See `:help 'list'`
 --  and `:help 'listchars'`
-vim.opt.list = true
+--  RE: Disable that, because its tab overwrites the indnetline.
+vim.opt.list = false
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
 -- Preview substitutions live, as you type!
@@ -353,8 +333,10 @@ require('lazy').setup({
         { '<leader>s', group = '[S]earch' },
         { '<leader>w', group = '[W]orkspace' },
         { '<leader>t', group = '[T]oggle' },
-        { '<leader>g', group = '[G]it Hunk', mode = { 'n', 'v' } },
-        { '<leader>h', group = '[H]arpoon' },
+        -- RE: Rename hunk to hunk + harpoon & add next/prev even though they don't appear in the view
+        { '<leader>h', group = '[H]unk / [H]arpoon', mode = { 'n', 'v' } },
+        { '<leader>]', group = 'Jump next' },
+        { '<leader>[', group = 'Jump prev' },
       },
     },
   },
@@ -422,6 +404,9 @@ require('lazy').setup({
               ['<c-enter>'] = 'to_fuzzy_refine', -- tf is that?
               ['<C-e>'] = { '<esc>', type = 'command' },
               ['<esc>'] = require('telescope.actions').close,
+              -- RE: Additional mappings that don't conflict with zellij
+              ['<C-j>'] = require('telescope.actions').move_selection_next,
+              ['<C-k>'] = require('telescope.actions').move_selection_previous,
             },
           },
         },
@@ -755,6 +740,7 @@ require('lazy').setup({
       end,
       formatters_by_ft = {
         lua = { 'stylua' },
+        go = { 'gofumpt' }, -- RE: Add go formatter
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --
@@ -819,10 +805,9 @@ require('lazy').setup({
         --
         -- No, but seriously. Please read `:help ins-completion`, it is really good!
         mapping = cmp.mapping.preset.insert {
-          -- Select the [n]ext item
-          ['<C-n>'] = cmp.mapping.select_next_item(),
-          -- Select the [p]revious item
-          ['<C-p>'] = cmp.mapping.select_prev_item(),
+          -- RE: Additional mappings that don't conflict with zellij
+          ['<C-j>'] = cmp.mapping.select_next_item(),
+          ['<C-k>'] = cmp.mapping.select_prev_item(),
 
           -- Scroll the documentation window [b]ack / [f]orward
           ['<C-b>'] = cmp.mapping.scroll_docs(-4),
@@ -974,9 +959,8 @@ require('lazy').setup({
   -- require 'kickstart.plugins.debug',
   -- require 'kickstart.plugins.autopairs',
   -- require 'kickstart.plugins.neo-tree',
-  -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
   -- require 'kickstart.plugins.lint',
-
+  require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
   require 'kickstart.plugins.indent_line',
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`

@@ -2,5 +2,7 @@ HISTSIZE=1000000
 SAVEHIST=1000000
 HISTFILE=$ZDOTDIR/.zsh_history
 
+#https://github.com/agkozak/agkozak-zsh-prompt/blob/4a2f8bfef928968a07d663131e3ee416b18f3d90/README.md?plain=1#L356
 AGKOZAK_LEFT_PROMPT_ONLY=1
 AGKOZAK_PROMPT_CHAR=( ❯ ❯ ❮ )
+AGKOZAK_COLORS_USER_HOST=blue

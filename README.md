@@ -27,3 +27,7 @@ zsh: zoxide^, lazygit^
 wezterm: wezterm (already includes Jet Brains and Nerd fonts)
 
 nvim: gcc, fzf, ripgrep, go
+
+alacritty: [jet brains nerd font](https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/JetBrainsMono.zip)
+
+zellij: -

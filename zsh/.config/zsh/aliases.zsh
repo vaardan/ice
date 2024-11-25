@@ -1,6 +1,7 @@
 alias vim='nvim'
 alias ll='ls -la'
 alias lg='lazygit'
+alias zl='zellij'
 
 case "$(uname -s)" in
 
