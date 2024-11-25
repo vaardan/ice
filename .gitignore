@@ -1,0 +1,6 @@
+.DS_Store
+.idea
+.vscode
+
+/zsh/.config/zsh/.zcompdump
+/zsh/.config/zsh/.zsh_history
